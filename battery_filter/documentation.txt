@@ -1,0 +1,50 @@
+The efficiency and accuracy of the algorithm are two important indicators of its performance:
+	1) The optimal estimation algorithm, represented by a Kalman filter, represents an obvious progress in
+terms of the LIB (lithium-ion battery - shows obvious nonlinear dynamic characteristics) state estimation
+		- Important parameters in the equivalent model, such as polarization resistance, capacitance.
+		-  unscented Kalman filter (UKF) which are algorithms developed based on the Kalman filter, better solve the state estimation problems
+for the nonlinear LIB.
+
+	 (1) considering the OCV not as a state variable existing in dynamic equations but as an intermediate quantity existing in 
+		a measurement equation; therefore, a reasonably big measurement noise (covariance) can be chosen to make the filter
+		not trust OCV excessively.
+	(2) Using the Coulomb integral equation (CIE) in the dynamic equations, and using the SOC as one of the state variables, 
+		thus, by the use of a smaller system noise (covariance)
+
+Still there is a problem, the obvious nonlinear of the SOC-OCV curve makes the model construction
+very difficult. Therefore, represented by the EKF  (Extended Kalman filter) method, complex methods are developing. Adopting
+these complex algorithms, the nonlinear problems are partially solved, and the problems of time varying
+parameters are also solved.
+
+SOC is commonly defined as “the percentage of the maximum possible charge that is present insidea rechargeable battery”
+
+SOCt = SOC0 - 1/C (integral t - 0) idt
+	- SOC0 is the initial value of SOC
+	- SOCt is the present value of SOC
+	- C is the total capacity of the battery
+	- integral(t-0)idt is the integral of discharge current during the discharge process
+
+Equivalent Circuit Model  -> The Dual Polarization (DP) model is adopted: uL = uOC -iR0 -uPA uPC
+
+A function of SOC-OCV [14] can be represented as: uOC = u(SOC,y) = y*SOC + bU
+	y:  slope of the data point on the SOC-OCV curve
+	bU:  has a correlation with SOC, which is one of the state variables of dynamic equation
+
+
+EKF
+--------------------------
+1 - estimator gain matrix
+	- KF gain vector: Lk
+	- prediction error: yk
+
+
+---------------------------------------------------
+BATTERY PARAMETERS
+-----------------------------------------------------
+rated capapcity: 2.37 Ah (max discharge 4-5A at 60 celsius) - 
+standard voltage: 3.7V (upper cutoff 4.2V - lower cutoff 3V)
+standard charge time: 3h
+
+Following experiments are conducted under room temperature condition (25 ?). 
+	1 - The battery is firstly fully charged by constant current constant voltage (CC-CV) charge method before rest of 1 hour is applied to obtain the OCV (open circuit voltage) of the battery at 100% SOC. 
+	2 - DCIR (Direct current internal resistance) test, a pulse-type charge and discharge current of 2.4 A for 10 seconds is applied. 

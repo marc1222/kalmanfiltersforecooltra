@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="eigen">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/implementation/eigen" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/implementation/eigen" />
+    </SOURCES>
+    <excluded>
+      <root url="file://$PROJECT_DIR$/implementation/eigen" />
+    </excluded>
+  </library>
+</component>
